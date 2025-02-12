@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Wonderland 💖</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Raleway:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            text-align: center;
+            background: linear-gradient(to bottom, #ffdde1, #ff8fab);
+            color: #a00000;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            margin-top: 80px;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 80px;
+            font-family: 'Great Vibes', cursive;
+            font-weight: bold;
+            color: #ff0040;
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 40px rgba(255, 0, 0, 0.5);
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 20px rgba(255, 0, 0, 0.6), 0 0 40px rgba(255, 0, 0, 0.5); }
+            100% { text-shadow: 0 0 30px rgba(255, 0, 0, 1), 0 0 60px rgba(255, 0, 0, 0.8); }
+        }
+
+        p {
+            font-size: 22px;
+            color: #700000;
+        }
+
+        button {
+            background: linear-gradient(45deg, #ff4d6d, #ff1e56);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 22px;
+            cursor: pointer;
+            border-radius: 30px;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
+            transition: 0.4s;
+        }
+
+        button:hover {
+            background: linear-gradient(45deg, #d00000, #a00000);
+            transform: scale(1.1);
+        }
+
+        #message {
+            font-size: 28px;
+            color: #a00000;
+            margin-top: 20px;
+            display: none;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .floating {
+            position: absolute;
+            font-size: 30px;
+            opacity: 0.7;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+        }
+
+        .countdown {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            background: rgba(255, 0, 0, 0.6);
+            padding: 10px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .rabbit {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 120px;
+            animation: bounce 2s infinite alternate;
+            cursor: pointer;
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+
+    <audio autoplay loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+    </audio>
+
+    <div class="container">
+        <h1>Love Wonderland 💖</h1>
+        <p>A special gift for you, my love!</p>
+        <button onclick="showMessage()">Click here for a surprise 🎁</button>
+        <p id="message">I love you forever! ❤️ You are my everything! 💕</p>
+        <div class="countdown" id="countdown"></div>
+    </div>
+
+    <img src="https://i.imgur.com/3mLVhwb.png" class="rabbit" onclick="rabbitSurprise()" title="Click me! 🐰❤️">
+
+    <script>
+        function showMessage() {
+            document.getElementById("message").style.display = "block";
+        }
+
+        function rabbitSurprise() {
+            alert("The rabbit says: 'I love you too! 🐰❤️'");
+        }
+
+        function updateCountdown() {
+            const eventDate = new Date("February 14, 2025 00:00:00").getTime();
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = `Valentine's Day in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = "Happy Valentine's Day! 🎉";
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+    </script>
+
+</body>
+</html>
